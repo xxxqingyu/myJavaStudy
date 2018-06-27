@@ -1,0 +1,9 @@
+package main;
+
+import java.util.ArrayList;
+
+public class demo_ArrayList {
+	public static void Test(){
+		ArrayList list=new ArrayList();
+	}
+}

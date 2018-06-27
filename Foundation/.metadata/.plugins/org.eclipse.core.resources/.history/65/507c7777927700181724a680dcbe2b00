@@ -1,0 +1,7 @@
+package main;
+
+public class demo_HashMap {
+	public static void Test(){
+		HashMap hash=new HashMap();
+	}
+}
