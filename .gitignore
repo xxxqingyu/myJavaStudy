@@ -30,9 +30,12 @@ hs_err_pid*
 .classpath/
 .project/
 .settings/
+.recommenders/
+
  
 # Build Artifacts 
 
+Servers/
 .gradle/
 build/
 target/
