@@ -27,8 +27,8 @@ hs_err_pid*
 # Eclipse Project files
 
 .metadata/ 
-.classpath
-.project
+.classpath/
+.project/
 .settings/
  
 # Build Artifacts 
