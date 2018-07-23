@@ -24,22 +24,25 @@ public class CustomerService {
 	public List<Customer> getCustomerList(){
 		Connection connection=null;
 		try {
-			List<Customer> customerList=new ArrayList<>();
+//			List<Customer> customerList=new ArrayList<>();
 			String sql="SELECT * FROM customer";
-			connection= DatabaseHelper.getConnection();
-			PreparedStatement statement=connection.prepareStatement(sql);
-			ResultSet resultSet=statement.executeQuery();
-			while (resultSet.next()) {
-				Customer customer=new Customer();
-				customer.setId(resultSet.getLong("id"));
-				customer.setName(resultSet.getString("name"));
-				customer.setName(resultSet.getString("contact"));
-				customer.setName(resultSet.getString("telephone"));
-				customer.setName(resultSet.getString("email"));
-				customer.setName(resultSet.getString("remark"));
-				customerList.add(customer);
-			}
-			return customerList;
+			
+			return DatabaseHelper.queryEntityList(Customer.class, connection, sql);
+			
+//			connection= DatabaseHelper.getConnection();
+//			PreparedStatement statement=connection.prepareStatement(sql);
+//			ResultSet resultSet=statement.executeQuery();
+//			while (resultSet.next()) {
+//				Customer customer=new Customer();
+//				customer.setId(resultSet.getLong("id"));
+//				customer.setName(resultSet.getString("name"));
+//				customer.setName(resultSet.getString("contact"));
+//				customer.setName(resultSet.getString("telephone"));
+//				customer.setName(resultSet.getString("email"));
+//				customer.setName(resultSet.getString("remark"));
+//				customerList.add(customer);
+//			}
+//			return customerList;
 		} catch (Exception e) {
 			LOGGER.error("execute sql failure",e);
 		}finally {
