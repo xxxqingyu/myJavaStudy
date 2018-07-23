@@ -15,6 +15,8 @@ import org.smart4j.chapter2.utils.PropsUtil;
 public class DatabaseHelper {
 	private static final Logger LOGGER=LoggerFactory.getLogger(DatabaseHelper.class);
 	private static final QueryRunner QUERY_RUNNER=new QueryRunner();
+	private static final ThreadLocal<Connection> CONNECTION_HOLDER=new ThreadLocal<>();
+	
 	
 	private static final String DRIVER;
 	private static final String	URL;
@@ -36,33 +38,45 @@ public class DatabaseHelper {
 		}
 	}
 	
-	public static <T> List<T> queryEntityList(Class<T> entityClass,Connection conn,String sql,Object...params) {
+	public static <T> List<T> queryEntityList(Class<T> entityClass,String sql,Object...params) {
 		List<T> entityList;
 		try{
-			entityList= QUERY_RUNNER.query(conn, sql, new BeanListHandler<T>(entityClass),params);
+			Connection connection=getConnection();
+			entityList= QUERY_RUNNER.query(connection, sql, new BeanListHandler<T>(entityClass),params);
 		}catch (SQLException e) {
 			LOGGER.error("query entity list failure",e);
 			throw new RuntimeException(e);
+		}finally {
+			closeConnection();
 		}
 		return entityList;
 	}
 	
+	/**
+	 * 创建数据库链接
+	 * @return
+	 */
 	public static Connection getConnection() {
-		Connection connection=null;
+		Connection connection=CONNECTION_HOLDER.get();
 		try {
 			connection=DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			LOGGER.error("get connection failure",e);
+		}finally {
+			CONNECTION_HOLDER.set(connection);
 		}
 		return connection;
 	}
 	
-	public static void closeConnection(Connection connection) {
+	public static void closeConnection() {
+		Connection connection=CONNECTION_HOLDER.get();
 		if (connection != null) {
 			try {
 				connection.close();
 			} catch (SQLException e) {
 				LOGGER.error("close connection failure",e);
+			}finally {
+				CONNECTION_HOLDER.remove();
 			}
 		}
 	}
