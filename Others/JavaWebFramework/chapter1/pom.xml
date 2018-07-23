@@ -85,7 +85,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.33</version>
+			<version>5.1.6</version>
 		</dependency>
 		<!-- Apache Commons Lang -->
 		<dependency>
@@ -97,6 +97,11 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
 			<version>4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbutils</groupId>
+			<artifactId>commons-dbutils</artifactId>
+			<version>1.6</version>
 		</dependency>
 	</dependencies>
 </project>
