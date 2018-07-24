@@ -89,7 +89,7 @@ public class DatabaseHelper {
 	}
 	
 	public static void executeSqlFile(String filePath) throws Exception {
-		InputStream inputStream=ClassLoader.getSystemResourceAsStream(filePath);
+		InputStream inputStream=Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
 		BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
 		
 		try{

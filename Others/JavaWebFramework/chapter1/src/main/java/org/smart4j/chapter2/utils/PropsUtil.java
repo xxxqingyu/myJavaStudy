@@ -3,6 +3,7 @@ package org.smart4j.chapter2.utils;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 
@@ -21,7 +22,7 @@ public final class PropsUtil {
 		Properties props=null;
 		InputStream is=null;
 		try{
-			is=ClassLoader.getSystemResourceAsStream(fileName);
+			is= Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");		
 			if(is == null){
 				throw new FileNotFoundException(fileName + " file is not found");
 			}
