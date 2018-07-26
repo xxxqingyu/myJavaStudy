@@ -22,6 +22,20 @@ import java.util.jar.JarFile;
  * 
  */
 public class ClassUtil {
+	
+	public static ClassLoader getClassLoader() {
+		return Thread.currentThread().getContextClassLoader();
+	}
+	
+	public static Class<?> loadClass(String className,boolean isInitialized) {
+		Class<?> clas;
+		try {
+			clas=Class.forName(className,isInitialized,getClassLoader());
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return clas;
+	}
 
     /**
      * 是否有注解
