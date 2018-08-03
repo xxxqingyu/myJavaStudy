@@ -1,6 +1,7 @@
 package org.smart4j.smart_framework.util;
 
 public final class StringUtil {
+	public static final String SEPARATOR=String.valueOf((char)29); 
 	/**
      * 判断是否为空
      * @param str
