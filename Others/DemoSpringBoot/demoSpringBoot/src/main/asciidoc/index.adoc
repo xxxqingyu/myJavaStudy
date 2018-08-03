@@ -1,0 +1,34 @@
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\src\main\asciidoc\preview.adoc[]
+
+=== getUser
+
+==== http-request 
+
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\target\snippets\getUser\http-request.adoc[]
+
+==== path-parameters类型说明 
+
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\target\snippets\getUser\path-parameters.adoc[]
+
+==== request-body类型说明 
+
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\target\snippets\getUser\request-body.adoc[]
+
+==== http-response 
+
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\target\snippets\getUser\http-response.adoc[]
+
+=== hello
+
+==== http-request 
+
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\target\snippets\hello\http-request.adoc[]
+
+==== request-body类型说明 
+
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\target\snippets\hello\request-body.adoc[]
+
+==== http-response 
+
+include::E:\JavaProject\myJavaStudy\Others\DemoSpringBoot\demoSpringBoot\target\snippets\hello\http-response.adoc[]
+
