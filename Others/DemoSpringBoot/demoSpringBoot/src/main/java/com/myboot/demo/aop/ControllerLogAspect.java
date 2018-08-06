@@ -13,9 +13,10 @@ import org.springframework.stereotype.Component;
 @Aspect 
 @Component
 public class ControllerLogAspect {
-//	//定义切面
-	@Pointcut("execution(* com.myboot.demo.controller..*.(..))")
+//	//定义切面 com.myboot.demo.controller
+	@Pointcut("execution(* com.myboot.demo.controller.*.*(..))")
 	public void pointcut() {}
+
 
 	//定义方法拦截的规则
 	//@Before("execution(* (@RestController *).*(..))")

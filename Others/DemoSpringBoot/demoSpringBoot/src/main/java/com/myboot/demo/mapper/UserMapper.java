@@ -43,6 +43,7 @@ public interface UserMapper {
 		public String sql_getUsers(long... ids) {
 			
 			List<String> idsStr=new ArrayList<String>();
+
 			for (Long id : ids) {
 				idsStr.add(id.toString());
 			}
