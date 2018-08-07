@@ -17,15 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myboot.demo.config.NeoProperties;
+import com.myboot.demo.daoAbstract.CustomerDao;
+import com.myboot.demo.domain.Customer;
 import com.myboot.demo.domain.User;
 import com.myboot.demo.mapper.UserMapper;
 
 @RestController
 public class HelloController {
 	
-
     @Autowired
     private UserMapper userMapper;
+    
+    @Autowired
+    private CustomerDao customerDao;
 	
 	@Resource
 	NeoProperties neoProperties;
@@ -44,7 +48,7 @@ public class HelloController {
 	}
 	
 	@RequestMapping("/uid")
-    String uid(HttpSession session) {
+    public String uid(HttpSession session) {
         UUID uid = (UUID) session.getAttribute("uid");
         if (uid == null) {
             uid = UUID.randomUUID();
@@ -52,4 +56,10 @@ public class HelloController {
         session.setAttribute("uid", uid);
         return session.getId();
     }
+	
+	@RequestMapping("/create")
+	public Customer createCustomer(Customer customer) {
+		this.customerDao.saveCustomer(customer);
+		return customer;
+	}
 }

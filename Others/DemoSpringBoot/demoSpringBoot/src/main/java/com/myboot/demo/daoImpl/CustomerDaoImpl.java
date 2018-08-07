@@ -10,8 +10,11 @@ import org.springframework.stereotype.Component;
 import com.myboot.demo.daoAbstract.CustomerDao;
 import com.myboot.demo.domain.Customer;
 
+
+
 @Component
 public class CustomerDaoImpl implements CustomerDao {
+	
 	@Autowired
     private MongoTemplate mongoTemplate;
 	
@@ -19,7 +22,7 @@ public class CustomerDaoImpl implements CustomerDao {
      * 创建对象
      * @param user
      */
-   // @Override
+    @Override
     public void saveCustomer(Customer user) {
         mongoTemplate.save(user);
     }
