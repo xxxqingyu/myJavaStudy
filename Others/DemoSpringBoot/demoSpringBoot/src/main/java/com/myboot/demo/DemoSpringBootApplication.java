@@ -10,8 +10,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication()
 @MapperScan("com.myboot.demo.mapper")
-//@ComponentScan(basePackages={"com.myboot.demo.daoImpl"})
-//@EnableAutoConfiguration
+//@ComponentScan(basePackages={"com.myboot.demo"})
 public class DemoSpringBootApplication {
 
 	public static void main(String[] args) {

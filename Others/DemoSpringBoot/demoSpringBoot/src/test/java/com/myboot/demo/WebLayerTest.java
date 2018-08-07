@@ -24,20 +24,31 @@ import java.nio.file.StandardOpenOption;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.myboot.demo.config.NeoProperties;
 import com.myboot.demo.controller.HelloController;
+import com.myboot.demo.daoAbstract.CustomerDao;
 import com.myboot.demo.domain.User;
 import com.myboot.demo.mapper.UserMapper;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(HelloController.class)
 @AutoConfigureRestDocs(outputDir = "target/snippets")
+@ComponentScan(basePackages={"com.myboot.demo.daoAbstract.impl"})
+
+//@WebMvcTest(HelloController.class)
+//https://stackoverflow.com/questions/39865596/difference-between-using-mockmvc-with-springboottest-and-using-webmvctest
+@SpringBootTest
+@AutoConfigureMockMvc
 public class WebLayerTest {
 
     @Autowired
@@ -45,10 +56,12 @@ public class WebLayerTest {
     
     @MockBean
     private UserMapper userMapper;
-    
-	
+    	
     @MockBean
 	NeoProperties neoProperties;
+    
+    @Autowired
+    CustomerDao customerDao;
 
     @Test
     public void shouldReturnDefaultMessage() throws Exception {

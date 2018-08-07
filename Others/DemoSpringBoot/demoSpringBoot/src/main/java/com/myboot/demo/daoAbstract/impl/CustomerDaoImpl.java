@@ -1,4 +1,4 @@
-package com.myboot.demo.daoImpl;
+package com.myboot.demo.daoAbstract.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -24,7 +24,7 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public void saveCustomer(Customer user) {
-        mongoTemplate.save(user);
+       // mongoTemplate.save(user);
     }
 
     /**
