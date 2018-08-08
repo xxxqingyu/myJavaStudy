@@ -1,0 +1,17 @@
+ymldemo:
+  env-dev:
+    name: dev
+    url: http://dev.abc.com
+    
+  names:
+    - xuxuan1
+    - xuxuan2
+    - xuxuan3
+  
+  mysqls:
+    - url: url1111
+      username: hehe
+      
+    - url: url222
+      username: username2
+  
