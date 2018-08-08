@@ -32,4 +32,8 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping("/view")
+	public String viewTest(Model model) {
+		return "/mview2/NewFile";
+	}
 }
