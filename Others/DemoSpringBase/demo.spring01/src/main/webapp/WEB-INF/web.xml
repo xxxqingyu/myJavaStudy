@@ -1,0 +1,28 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <!-- spring 配置 -->
+  <context-param>
+            <param-name>contextConfigLocation</param-name>
+            <!-- <param-value>classpath*:config/applicationContext.xml</param-value> -->
+            <param-value>/WEB-INF/classes/applicationContext.xml</param-value>
+  </context-param>
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <servlet>
+  	<servlet-name>HelleServlet</servlet-name>
+  	<display-name>HelleServlet</display-name>
+  	<description></description>
+  	<servlet-class>demo.spring01.web.HelleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>HelleServlet</servlet-name>
+  	<url-pattern>/HelleServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
