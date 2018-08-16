@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+类名 -->
+<mapper namespace="demo.springMvc01.dao.mapper.UserMapper">
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称 -->
+    <select id="getAll" resultType="demo.springMvc01.dao.domain.User">
+       SELECT * FROM users
+    </select>
+    <update id="update" parameterType="demo.springMvc01.dao.domain.User">  
+       UPDATE users SET userName=#{userName},nickName=#{nickName} WHERE id =#{id};     
+	</update> 
+	<insert id="insert" parameterType="demo.springMvc01.dao.domain.User">
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="id"> 
+			select @@IDENTITY as id 
+		</selectKey> 
+		INSERT INTO `demo_test`.`users` (`userName`,`password`,`nickName`,`email`,`isAdmin`,`createDate`)
+		VALUES (#{userName},#{password},#{nickName}>,#{email},#{isAdmin}>,#{createDate}); 
+	</insert>
+</mapper>

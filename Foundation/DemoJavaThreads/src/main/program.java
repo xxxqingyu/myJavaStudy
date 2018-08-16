@@ -1,5 +1,7 @@
 package main;
 
+import java.util.concurrent.CyclicBarrier;
+
 public class program {
 
 	public static void main(String[] args) {
@@ -15,3 +17,12 @@ public class program {
 	}
 	
 }
+
+class CyclicBarrierTest{
+	
+	public static void Test(){
+		CyclicBarrier cyclicBarrier=new CyclicBarrier(2);
+	}
+}
+
+//CountDownLatch
