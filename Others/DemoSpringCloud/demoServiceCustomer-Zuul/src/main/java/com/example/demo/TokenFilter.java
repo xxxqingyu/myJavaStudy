@@ -33,9 +33,15 @@ public class TokenFilter  extends ZuulFilter {
 
         //logger.info("--->>> TokenFilter {},{}", request.getMethod(), request.getRequestURL().toString());
 
-        String token = request.getParameter("token");// 获取请求的参数
+        String token = request.getParameter("access_token");// 获取请求的参数
+        
+        String tokenHeader = request.getHeader("Authorization");
+        
+        if(!StringUtils.isEmpty(tokenHeader)){
+        	ctx.addZuulRequestHeader("Authorization", tokenHeader);
+        }
 
-        if (!StringUtils.isEmpty(token)) {
+        if (!StringUtils.isEmpty(token)||!StringUtils.isEmpty(tokenHeader)) {
             ctx.setSendZuulResponse(true); //对请求进行路由
             ctx.setResponseStatusCode(200);
             ctx.set("isSuccess", true);
@@ -43,7 +49,7 @@ public class TokenFilter  extends ZuulFilter {
         } else {
             ctx.setSendZuulResponse(false); //不对其进行路由
             ctx.setResponseStatusCode(400);
-            ctx.setResponseBody("token is empty");
+            ctx.setResponseBody("access_token is empty");
             ctx.set("isSuccess", false);
             return null;
         }

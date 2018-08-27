@@ -9,8 +9,8 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetails user=null;
-		if("admin".equals(username)){
-			//user=new user
+		if("root".equals(username)){
+			user=new MyUserDetails("root","root");
 		}
 		// TODO Auto-generated method stub
 		return user;
