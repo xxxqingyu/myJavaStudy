@@ -32,6 +32,6 @@ public class HelloController {
     	SecurityContext ctx = SecurityContextHolder.getContext();
     	Authentication auth = ctx.getAuthentication();
 
-        return (Principal)auth.getPrincipal();
+        return (Principal)auth.getCredentials();
     }
 }
