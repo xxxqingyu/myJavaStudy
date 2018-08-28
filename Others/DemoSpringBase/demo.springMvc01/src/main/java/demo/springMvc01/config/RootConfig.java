@@ -13,6 +13,9 @@ import demo.springMvc01.service.UserService;
 @ComponentScan({"demo.springMvc01","demo.springMvc01.web"})
 @PropertySource(value={"classpath:jdbc.properties"})
 @EnableTransactionManagement
+
+//@Import({CDPlayerConfig.class})
+//@ImportResource("classpath:beans.xml")
 public class RootConfig {
 
 }

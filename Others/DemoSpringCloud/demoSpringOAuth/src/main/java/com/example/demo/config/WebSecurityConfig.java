@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(inMemoryAuthenticationProvider());
+		auth.authenticationProvider(inMemoryAuthenticationProvider()).authenticationProvider(phoneCodeAuthenticationProvider());
 	}
 	
 	
@@ -50,6 +50,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    
+	@Bean
+	public PhoneCodeAuthenticationProvider phoneCodeAuthenticationProvider(){
+		return new PhoneCodeAuthenticationProvider();
+	}
+	
 
 	@Bean
 	public InMemoryAuthenticationProvider inMemoryAuthenticationProvider(){
