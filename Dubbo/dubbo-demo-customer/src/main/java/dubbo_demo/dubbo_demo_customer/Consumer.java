@@ -15,9 +15,15 @@ public class Consumer
     	 ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"consumer.xml"});
          context.start();
          DemoService demoService = (DemoService)context.getBean("demoService"); // 获取远程服务代理
-         String hello = demoService.sayHello("world"); // 执行远程方法
          System.out.println( "-----------------------------------" ); 
-         System.out.println( hello ); 
-         System.in.read();
+         while (true) {
+             try {
+                 Thread.sleep(1000);
+                 String hello = demoService.sayHello("world"); // call remote method
+                 System.out.println(hello); // get result
+             } catch (Throwable throwable) {
+                 throwable.printStackTrace();
+             }
+         }
     }
 }
