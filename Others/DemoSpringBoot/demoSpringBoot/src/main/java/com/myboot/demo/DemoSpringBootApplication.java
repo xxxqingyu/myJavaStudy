@@ -14,6 +14,7 @@ import net.bytebuddy.asm.Advice.This;
 
 @SpringBootApplication()
 @MapperScan("com.myboot.demo.mapper")
+//@ServletComponentScan
 //@ComponentScan(basePackages={"com.myboot.demo"})
 public class DemoSpringBootApplication {
 

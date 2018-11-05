@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import demo.springMvc01.dao.domain.User;
 import demo.springMvc01.dao.mapper.UserMapper;
@@ -25,6 +26,7 @@ public class UserSerivceImpl implements UserService , ApplicationContextAware {
 		user1.setUserName("6666");
 		userMapper.update(user1);
 		
+		//TransactionAspectSupport.currentTransactionStatus();
 		//throw new RuntimeException("sssss");
 	}
 

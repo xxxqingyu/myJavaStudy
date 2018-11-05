@@ -6,16 +6,35 @@ import java.util.concurrent.FutureTask;
 public class Program {
 
 	public static void main(String[] args) throws Exception {
-		testCallable();
 		
-		int s = 10;
+		Integer  a =1;
+		Integer  b =2;
+		Integer  c =3;
+		Integer  d =4;
+		Integer  e =321;
+		Integer  f =321;
+		Integer  h =320;
+		
+		Long g= 3L;
+		
+		System.out.println(c==d);
+		System.out.println(e==f);
+		System.out.println(e==(h+a));
+		System.out.println(c==(a+b));
+		System.out.println(c.equals(a+b));
+		
+		return;
+		
+		//testCallable();
+		
+		//int s = 10;
 		// TODO Auto-generated method stub
-		Operator addOperator = (a, b) -> a + b + s;
+		//Operator addOperator = (a, b) -> a + b + s;
 		
-		System.out.println("10 + 5 = " + addOperator.calcuate(10, 5));
+		//System.out.println("10 + 5 = " + addOperator.calcuate(10, 5));
 		
-		Test1 test=new Test1(11,21);
-		test.calcuate(AddOperator::calcuate);
+		//Test1 test=new Test1(11,21);
+		//test.calcuate(AddOperator::calcuate);
 	}
 	
 	public static void testCallable() throws Exception{
