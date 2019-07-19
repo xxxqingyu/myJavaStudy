@@ -20,7 +20,11 @@ public class AuthorizationServerConfig extends  AuthorizationServerConfigurerAda
 		.withClient("myMvc")
 		.scopes("api")
 		.secret("android")
-		.authorizedGrantTypes("password");
+		.authorizedGrantTypes("password")
+		.and()
+		.withClient("myApi")
+		.secret("android")
+		.authorizedGrantTypes("client_credentials");
 	}
 
 	@Override
@@ -34,7 +38,7 @@ public class AuthorizationServerConfig extends  AuthorizationServerConfigurerAda
 		security
 		.allowFormAuthenticationForClients()
         .tokenKeyAccess("permitAll()")
-        .checkTokenAccess("isAuthenticated()");
+        .checkTokenAccess("permitAll()");
 	}
 	
 }

@@ -1,7 +1,0 @@
-package main;
-
-public class demo_ArrayList {
-	public static void Test(){
-		
-	}
-}
