@@ -1,0 +1,13 @@
+security:
+  oauth2:
+    client:
+      clientId: myApi
+      clientSecret: secret
+      userAuthorizationUri: http://localhost:9010/oauth/authorize
+      grant-type: client_credentials
+      scope: read
+      access-token-uri: http://localhost:9010/oauth/token
+    resource:
+      userInfoUri: http://localhost:9010/user
+    authorization:
+      checkTokenAccess: http://localhost:90101/oauth/check_token

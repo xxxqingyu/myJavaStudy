@@ -27,9 +27,9 @@ hs_err_pid*
 # Eclipse Project files
 
 .metadata/
-.classpath/
+# .classpath/
 .project/
-.settings/
+# .settings/
 .recommenders/
 
  

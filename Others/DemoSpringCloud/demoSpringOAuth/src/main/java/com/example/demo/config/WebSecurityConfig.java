@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,9 +8,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.example.demo.MyUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -18,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(inMemoryAuthenticationProvider());
+		auth.authenticationProvider(inMemoryAuthenticationProvider()).authenticationProvider(phoneCodeAuthenticationProvider());
 	}
 	
 	
@@ -47,10 +50,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    
+	@Bean
+	public PhoneCodeAuthenticationProvider phoneCodeAuthenticationProvider(){
+		return new PhoneCodeAuthenticationProvider();
+	}
+	
 
 	@Bean
 	public InMemoryAuthenticationProvider inMemoryAuthenticationProvider(){
 		return new InMemoryAuthenticationProvider();
+	}
+	
+	@Bean
+	public UserDetailsService  userDetailsService(){
+		return new MyUserDetailsService();
 	}
 	
 	@Bean
